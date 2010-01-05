@@ -709,7 +709,7 @@ const struct board_api board_api_gta02 = {
 			.filesystem = FS_EXT2,
 			.filepath = "boot/uImage-GTA02.bin",
 			.initramfs_filepath = "boot/initrd-GTA02.bin",
-			.commandline_append = " root=/dev/mmcblk0p1 rootdelay=1 ",
+			.commandline_append = " root=/dev/mmcblk0p1 rootwait ",
 		},
 		[1] = {
 			.name = "SD Card EXT2 P1 Kernel",
@@ -719,7 +719,7 @@ const struct board_api board_api_gta02 = {
 			.filesystem = FS_EXT2,
 			.filepath = "boot/uImage-GTA02.bin.2",
 			.initramfs_filepath = "boot/initrd-GTA02.bin.2",
-			.commandline_append = " root=/dev/mmcblk0p1 rootdelay=1 ",
+			.commandline_append = " root=/dev/mmcblk0p1 rootwait ",
 		},
 		[2] = {
 			.name = "SD Card EXT2 P2 Kernel",
@@ -729,7 +729,7 @@ const struct board_api board_api_gta02 = {
 			.filesystem = FS_EXT2,
 			.filepath = "boot/uImage-GTA02.bin",
 			.initramfs_filepath = "boot/initrd-GTA02.bin",
-			.commandline_append = " root=/dev/mmcblk0p2 rootdelay=1 ",
+			.commandline_append = " root=/dev/mmcblk0p2 rootwait ",
 		},
 		[3] = {
 			.name = "SD Card EXT2 P3 Kernel",
@@ -739,7 +739,7 @@ const struct board_api board_api_gta02 = {
 			.filesystem = FS_EXT2,
 			.filepath = "boot/uImage-GTA02.bin",
 			.initramfs_filepath = "boot/initrd-GTA02.bin",
-			.commandline_append = " root=/dev/mmcblk0p3 rootdelay=1 ",
+			.commandline_append = " root=/dev/mmcblk0p3 rootwait ",
 		},
 		[KERNEL_SOURCE_NAND_INDEX] = {
 			.name = "NAND Kernel",
