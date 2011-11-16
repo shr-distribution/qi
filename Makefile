@@ -16,17 +16,11 @@
 
 include config.mk
 
-BUILD_DATE := $(shell date --iso-8601=seconds)
-BUILD_HOST := $(shell hostname)
-BUILD_BRANCH ?= $(shell git branch | grep ^\* | cut -d' ' -f2)
-BUILD_HEAD ?= $(shell git show --pretty=oneline | head -n1 | cut -d' ' -f1 | cut -b1-16)
-BUILD_VERSION := ${BUILD_BRANCH}_${BUILD_HEAD}
-
 LDS	= src/cpu/$(CPU)/qi.lds
 INCLUDE	= include
 IMAGE_DIR	= image
 TOOLS	= tools
-CFLAGS	= -Wall -Werror -I $(INCLUDE) -g -c -Os -fno-strict-aliasing -mlong-calls \
+CFLAGS	= -Wall -Werror -I $(INCLUDE) $(EXTRA_CFLAGS) -g -c -Os -fno-strict-aliasing -mlong-calls \
 	  -fno-common -ffixed-r8 -msoft-float -fno-builtin -ffreestanding \
 	  -march=armv4t -mno-thumb-interwork -Wstrict-prototypes \
 	  -DBUILD_HOST="${BUILD_HOST}" -DBUILD_VERSION="${BUILD_VERSION}" \
@@ -73,7 +67,7 @@ all:${UDFU_IMAGE}
 ${OBJS}:${SRCS} ${INCLUDE}/*.h
 
 ${MKUDFU}:
-	 make -C $(TOOLS)
+	 gcc tools/mkudfu.c -o ${MKUDFU} -Itools/
 
 ${UDFU_IMAGE}:${OBJS} ${MKUDFU}
 	mkdir -p image
