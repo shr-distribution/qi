@@ -694,8 +694,8 @@ const struct board_api board_api_gta02 = {
 	.commandline_board = "loglevel=4 "
 				      "console=tty0 "
 				      "console=ttySAC2,115200 "
-				      "init=/sbin/init "
-				      "ro ",
+				      "init=/usr/sbin/bootchartd printk.time=y initcall_debug=1 "
+				      "rw ",
 	.commandline_board_debug =  " loglevel=8",
 	.noboot = "boot/noboot-GTA02",
 	.append = "boot/append-GTA02",
