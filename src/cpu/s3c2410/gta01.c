@@ -263,11 +263,11 @@ const struct board_api board_api_gta01 = {
 				 "0x00200000(kernel),"
 				 "0x000a0000(splash),"
 				 "0x03d1c000(rootfs) "
-			       "loglevel=4 "
+			       "loglevel=8 "
 			       "console=tty0 "
 			       "console=ttySAC0,115200 "
-			       "init=/sbin/init "
-			       "ro ",
+			       "init=/sbin/init user_debug=-1 "
+			       "rw ",
 	.commandline_board_debug = " loglevel=8 ",
 	.noboot = "boot/noboot-GTA01",
 	.append = "boot/append-GTA01",
