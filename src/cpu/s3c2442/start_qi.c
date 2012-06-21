@@ -25,6 +25,7 @@
 
 
 #include <qi.h>
+#include <stddef.h>
 #include "nand_read.h"
 #include <neo_gta02.h>
 
