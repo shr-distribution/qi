@@ -137,7 +137,6 @@ static int mmc_block_read(u8 *dst, u32 src, u32 len)
 {
 	u32 dcon, fifo;
 	u32 *dst_u32 = (u32 *)dst;
-	u32 *resp;
 
 	if (len == 0)
 		return 0;
@@ -145,7 +144,7 @@ static int mmc_block_read(u8 *dst, u32 src, u32 len)
 //	debug("mmc_block_rd dst %lx src %lx len %d\n", (u32)dst, src, len);
 
 	/* set block len */
-	resp = mmc_cmd(MMC_CMD_SET_BLOCKLEN, len, CMD_F_RESP);
+	mmc_cmd(MMC_CMD_SET_BLOCKLEN, len, CMD_F_RESP);
 	SDIBSIZE = len;
 
 	//SDIPRE = 0xff;
@@ -164,9 +163,9 @@ static int mmc_block_read(u8 *dst, u32 src, u32 len)
 
 	/* send read command */
 	if (!is_sdhc)
-		resp = mmc_cmd(MMC_CMD_READ_BLOCK, src, CMD_F_RESP);
+		mmc_cmd(MMC_CMD_READ_BLOCK, src, CMD_F_RESP);
 	else
-		resp = mmc_cmd(MMC_CMD_READ_BLOCK, src / MMC_BLOCK_SIZE, CMD_F_RESP);
+		mmc_cmd(MMC_CMD_READ_BLOCK, src / MMC_BLOCK_SIZE, CMD_F_RESP);
 
 	while (len > 0) {
 		u32 sdidsta = SDIDSTA;
